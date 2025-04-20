@@ -1,6 +1,7 @@
 package com.retail.mate.ms.api.gateway.routes;
 
 import com.retail.mate.ms.api.gateway.configurations.PropertyConfig;
+import com.retail.mate.ms.api.gateway.constants.BusinessConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -17,21 +18,23 @@ public class GatewayRoutes {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
 
-                .route("product-service", r -> r.path("/api/products/**")
-                        .uri("lb://product-service"))
+                .route(BusinessConstants.PRODUCT_SERVICE, r -> r.path("/api/products/**")
+                        .uri(getServiceUri(BusinessConstants.PRODUCT_SERVICE)))
 
-                .route("order-service", r -> r.path("/api/orders/**")
-                        .uri("lb://order-service"))
+                .route(BusinessConstants.ORDER_SERVICE, r -> r.path("/api/orders/**")
+                        .uri(getServiceUri(BusinessConstants.ORDER_SERVICE)))
+
+                .route(BusinessConstants.BILLING_SERVICE, r -> r.path("/api/billing/**")
+                        .uri(getServiceUri(BusinessConstants.BILLING_SERVICE)))
+
+                .route(BusinessConstants.INVENTORY_SERVICE, r -> r.path("/api/inventory/**")
+                        .uri(getServiceUri(BusinessConstants.INVENTORY_SERVICE)))
 
                 .build();
     }
 
-    private String getServiceName(String service){
-        return "";
-    }
-
-    private String getServiceUri(String service){
-        return "";
+    private String getServiceUri(String serviceName){
+        return propertyConfig.getGateway().getService().getNames().get(serviceName);
     }
 
 }

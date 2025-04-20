@@ -4,7 +4,7 @@ package com.retail.mate.ms.api.gateway.constants;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BussinessContants {
+public class BusinessConstants {
 
     public static final String PRODUCT_SERVICE = "Product-Service";
 

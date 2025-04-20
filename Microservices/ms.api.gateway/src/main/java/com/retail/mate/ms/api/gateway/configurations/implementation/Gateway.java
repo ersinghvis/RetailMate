@@ -1,17 +1,14 @@
 package com.retail.mate.ms.api.gateway.configurations.implementation;
 
-import com.retail.mate.ms.api.gateway.configurations.interfaces.IGateway;
-import com.retail.mate.ms.api.gateway.configurations.interfaces.IService;
+public class Gateway {
 
-public class Gateway implements IGateway {
+    private Service service;
 
-    private IService service;
-
-    public void setService(IService service) {
+    public void setService(Service service) {
         this.service = service;
     }
 
-    public IService getService() {
+    public Service getService() {
         return service;
     }
 }

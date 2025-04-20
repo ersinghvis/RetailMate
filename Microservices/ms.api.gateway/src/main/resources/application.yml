@@ -16,10 +16,8 @@ com:
       configurations:
         gateway:
           service:
-            names: [ { name : "Product-Service", uri : "localhost:8083/" },
-                      { name : "Order-Service", uri : "localhost:8084/" },
-                      { name : "Billing-Service", uri : "localhost:8085/" },
-                      { name : "Inventory-Service", uri : "localhost:8086/" }
-                    ]
-
-
+            names:
+              Product-Service: "http://localhost:8083/"
+              Order-Service: "http://localhost:8084/"
+              Billing-Service: "http://localhost:8085/"
+              Inventory-Service: "http://localhost:8086/"

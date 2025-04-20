@@ -1,10 +1,7 @@
 package com.retail.mate.ms.api.gateway.configurations.implementation;
-
-import com.retail.mate.ms.api.gateway.configurations.interfaces.IService;
-
 import java.util.Map;
 
-public class Service implements IService {
+public class Service {
 
     private Map<String, String> names;
 

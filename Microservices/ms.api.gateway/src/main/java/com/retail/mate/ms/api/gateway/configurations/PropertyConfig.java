@@ -1,20 +1,20 @@
 package com.retail.mate.ms.api.gateway.configurations;
 
-import com.retail.mate.ms.api.gateway.configurations.interfaces.IGateway;
+import com.retail.mate.ms.api.gateway.configurations.implementation.Gateway;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 @ConfigurationProperties(prefix="com.retailmate.ms.configurations")
-@EnableConfigurationProperties
+@Configuration
 public class PropertyConfig {
 
-    private IGateway gateway;
+    private Gateway gateway;
 
-    public IGateway getGateway() {
+    public Gateway getGateway() {
         return gateway;
     }
 
-    public void setGateway(IGateway gateway) {
+    public void setGateway(Gateway gateway) {
         this.gateway = gateway;
     }
 }
