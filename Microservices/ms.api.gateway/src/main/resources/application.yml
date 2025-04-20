@@ -1,0 +1,25 @@
+application:
+  port: 8083
+
+spring:
+  application:
+    name: Api-Gateway
+
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka
+
+com:
+  retailmate:
+    ms:
+      configurations:
+        gateway:
+          service:
+            names: [ { name : "Product-Service", uri : "localhost:8083/" },
+                      { name : "Order-Service", uri : "localhost:8084/" },
+                      { name : "Billing-Service", uri : "localhost:8085/" },
+                      { name : "Inventory-Service", uri : "localhost:8086/" }
+                    ]
+
+
