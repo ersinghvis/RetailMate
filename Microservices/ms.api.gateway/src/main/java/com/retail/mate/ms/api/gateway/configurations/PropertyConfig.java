@@ -1,6 +1,5 @@
 package com.retail.mate.ms.api.gateway.configurations;
 
-import com.retail.mate.ms.api.gateway.configurations.implementation.Gateway;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PropertyConfig {
 
-    private Gateway gateway;
+    private GatewayConfig gateway;
 
-    public Gateway getGateway() {
+    public GatewayConfig getGateway() {
         return gateway;
     }
 
-    public void setGateway(Gateway gateway) {
+    public void setGateway(GatewayConfig gateway) {
         this.gateway = gateway;
     }
 }

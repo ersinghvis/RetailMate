@@ -18,23 +18,27 @@ public class GatewayRoutes {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
 
-                .route(BusinessConstants.PRODUCT_SERVICE, r -> r.path("/api/products/**")
+                .route(BusinessConstants.PRODUCT_SERVICE, r -> r.path( getPath(BusinessConstants.PRODUCT_SERVICE) )
                         .uri(getServiceUri(BusinessConstants.PRODUCT_SERVICE)))
 
-                .route(BusinessConstants.ORDER_SERVICE, r -> r.path("/api/orders/**")
+                .route(BusinessConstants.ORDER_SERVICE, r -> r.path( getPath(BusinessConstants.ORDER_SERVICE) )
                         .uri(getServiceUri(BusinessConstants.ORDER_SERVICE)))
 
-                .route(BusinessConstants.BILLING_SERVICE, r -> r.path("/api/billing/**")
+                .route(BusinessConstants.BILLING_SERVICE, r -> r.path( getPath(BusinessConstants.BILLING_SERVICE) )
                         .uri(getServiceUri(BusinessConstants.BILLING_SERVICE)))
 
-                .route(BusinessConstants.INVENTORY_SERVICE, r -> r.path("/api/inventory/**")
+                .route(BusinessConstants.INVENTORY_SERVICE, r -> r.path( getPath(BusinessConstants.INVENTORY_SERVICE) )
                         .uri(getServiceUri(BusinessConstants.INVENTORY_SERVICE)))
 
                 .build();
     }
 
     private String getServiceUri(String serviceName){
-        return propertyConfig.getGateway().getService().getNames().get(serviceName);
+        return propertyConfig.getGateway().getServices().getServiceConfig(serviceName).getUri();
+    }
+
+    private String getPath(String serviceName){
+        return propertyConfig.getGateway().getServices().getServiceConfig(serviceName).getPredicate();
     }
 
 }

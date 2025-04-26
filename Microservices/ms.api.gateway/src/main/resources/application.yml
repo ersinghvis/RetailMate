@@ -15,9 +15,17 @@ com:
     ms:
       configurations:
         gateway:
-          service:
-            names:
-              Product-Service: "http://localhost:8083/"
-              Order-Service: "http://localhost:8084/"
-              Billing-Service: "http://localhost:8085/"
-              Inventory-Service: "http://localhost:8086/"
+          services:
+            PRODUCT-SERVICE:
+              uri: lb://PRODUCT-SERVICE
+              predicate:
+                Path=/api/products/**
+            ORDER-SERVICE:
+              uri: lb://ORDER-SERVICE
+              predicate: Path=/api/orders/**
+            BILLING-SERVICE:
+              uri: lb://BILLING-SERVICE
+              predicate: Path=/api/billing/**
+            INVENTORY-SERVICE:
+              uri: lb://INVENTORY-SERVICE
+              predicate: Path=/api/inventory/**
