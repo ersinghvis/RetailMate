@@ -1,24 +1,12 @@
-package com.retail.mate.ms.service.product.entities;
-import jakarta.persistence.*;
+package com.retail.mate.ms.service.product.dto;
 
-@Entity
-@Table(name = "products")
-public class ProductEntity {
+public class ProductDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long productId;
-
     private String name;
-
     private String description;
-
     private double price;
-
-    @ManyToOne
-    @JoinColumn(name = "category_fk", referencedColumnName = "id")
-    private CategoryEntity category;
+    private CategoryDTO category;
 
     public long getProductId() {
         return productId;
@@ -52,4 +40,11 @@ public class ProductEntity {
         this.price = price;
     }
 
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
+    }
 }
